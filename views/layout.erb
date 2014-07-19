@@ -48,6 +48,14 @@
     })();<% end %>
   </script>
 
+  <script>
+    if(/Trident\/[567]\b/.test(navigator.userAgent) || (navigator.userAgent.match(/AppleWebKit\/(\d+)/) || [])[1] < 537) {
+      var imported = document.createElement('script');
+      imported.src = '<%= javascript_url('svg4everybody') %>';
+      document.head.appendChild(imported);
+    }
+  </script>
+
   <%= javascript_tags('jquery') %>
   <%= javascript_tags('utilities') %>
   <%= javascript_tags('application') %>

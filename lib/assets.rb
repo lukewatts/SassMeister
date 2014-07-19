@@ -19,7 +19,7 @@ module Assets
 
     "<link rel=\"stylesheet\" href=\"#{HOST}/css/#{bundle}.css\">"
   end
-  
+
   def image_tag(image)
     "<img src=\"#{HOST}/images/#{image}\">"
   end
@@ -30,6 +30,12 @@ module Assets
     return "-#{build}" if build
 
     nil
+  end
+
+  def javascript_url(bundle)
+    return "#{HOST}/js/#{bundle}#{version(bundle)}.js" if settings.environment == :production
+
+    return "#{HOST}/#{assets['javascripts'][bundle].first.sub('javascripts', 'js')}"
   end
 
   private
