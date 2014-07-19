@@ -58,8 +58,6 @@ task 'assets:precompile' do
   assets['javascripts'].each do |js|
     file = File.read("public/js/#{js[0]}.js")
     sha1 = Digest::SHA1.hexdigest(file).slice(0..15)
- 
-    # File.open("config/#{js[0]}.txt", 'w') {|f| f.write(sha1) }
 
     manifest[js[0]] = sha1
 
@@ -69,11 +67,37 @@ task 'assets:precompile' do
   file = File.read('public/css/style.css')
   sha1 = Digest::SHA1.hexdigest(file).slice(0..15)
 
-  # File.open('config/style.txt', 'w') {|f| f.write(sha1) }
-
   manifest['style'] = sha1
 
   File.open("public/css/style-#{sha1}.css", 'w') {|f| f.write(file) }
 
   File.open("config/asset-manifest.yml", 'w') {|f| f.write(manifest.to_yaml) }
+end
+
+
+desc 'Compile the app\'s icons to an SVG sprite'
+task 'svg:sprite' do
+  require 'nokogiri'
+
+  @doc = Nokogiri::XML::Document.new
+
+  @svg = @doc.add_child Nokogiri::XML::Node.new "svg", @doc
+
+  @svg['xmlns'] = 'http://www.w3.org/2000/svg'
+
+  Dir.glob('svg/*.svg').each do |file|
+    node = Nokogiri::XML(File.open(file)).css('svg').first
+
+    id = file.split('/')[1].split('.')[0]
+
+    symbol = Nokogiri::XML::Node.new "symbol", @doc
+    symbol['viewBox'] = node['viewBox']
+    symbol['id'] = id
+    symbol << "<title>#{id}</title>"
+    symbol << node.children.to_xml.strip
+
+    @svg.add_child(symbol)
+  end
+
+  File.open("public/images/icons.svg", 'w') {|f| f.write(@doc.to_xml.gsub(/(\n|\t|\s{2,})/, '')) }
 end

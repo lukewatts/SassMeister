@@ -19,6 +19,7 @@ group :assets do
   gem 'stipe'
   gem 'jammit'
   gem 'closure-compiler'
+  gem 'nokogiri'
 end
 
 group :development do
