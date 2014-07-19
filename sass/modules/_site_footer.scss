@@ -12,7 +12,6 @@ footer {
   border-top: 1px solid $golf_gray;
   background: scale-color($india_gray, $lightness: 50%);
 
-
   a {
     color: $charlie_gray;
   }
@@ -51,7 +50,6 @@ footer {
     }
   }
 
-
   .built-by {
     @include grid(6);
 
@@ -70,14 +68,6 @@ footer {
     @include grid(6);
 
     text-align: right;
-    line-height: .75;
-    padding-top: 0.75em;
-  
-    &:hover .logo {
-      background: transparent;
-      text-shadow: 0 0 0.1em $alpha_color_delta;
-    }
-
 
     @media #{$mobile} {
       @include grid(4);
@@ -86,38 +76,36 @@ footer {
         display: none;
       }
     }
-  }
 
-  .logo {
-    @extend %icon-font;
-
-    margin-left: 0.3em;
-
-    &:before {
-      content: "\e001";
-      font-size: 4.5em;
-      line-height: 1px;
-
-      @media #{$mobile} {
-        font-size: 4em;
-      }
+    a {
+      display: inline-block;
+      vertical-align: middle;
     }
 
-    
-    @media #{$mobile} {
-      left: 0.33333em;
+    svg {
+      display: inline-block;
+      vertical-align: middle;
+      fill: $charlie_gray;
+      height: 2em;
+      width: 4.5em;
+      margin: -6px 0 0 0.25em;
+    }
+
+    &:hover svg {
+      background: transparent;
+      stroke: transparentize(scale-color($alpha_color_delta, $saturation: 90%, $lightness: 10%), 0.5);
     }
   }
 
-  .twitter-icon:before, .paypal-icon:before {
+  .twitter-icon:before {
     font-size: 1em;
-	  margin-right: 0.2em;
+    margin-right: 0.2em;
   }
 
   .heart-icon {
     &:before {
       font-size: 1.2em;
-  	  margin-right: 0.2em;
+      margin-right: 0.2em;
     }
 
     @media #{$mobile} {

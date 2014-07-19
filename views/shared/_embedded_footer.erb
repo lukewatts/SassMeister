@@ -3,5 +3,9 @@
     <%= "Built by <a href=\"https://github.com/#{@gist[:gist_owner]}\">#{@gist[:gist_owner]}</a>" if @gist[:gist_owner] %>
   </p>
 
-  <p class="app-link"><a href="http://sassmeister.com/gist/<%= @gist[:gist_id] %>"><span class="cta">Play with this gist on</span> <span class="logo" title="The sassiest way to play with Sass, Compass, &amp; LibSass!"><span class="alt">SassMeister</span></span></a></p>
+  <p class="app-link">
+    <a href="http://sassmeister.com/gist/<%= @gist[:gist_id] %>">
+      <span class="cta">Play with this gist on</span> <%= File.read('svg/sassmeister.svg') %>
+    </a>
+  </p>
 </footer>
