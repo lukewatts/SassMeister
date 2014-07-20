@@ -66,13 +66,13 @@
   }
 }
 
-.bookmark-icon {
-  @extend %icon-font;
-
-  &:before {
-    content: '\e000';
-  }
-}
+// .bookmark-icon {
+//   @extend %icon-font;
+// 
+//   &:before {
+//     content: '\e000';
+//   }
+// }
 
 // Github fork
 .fork-gist {
@@ -83,14 +83,14 @@
   }
 }
 
-// Github login
-.github {
-  @extend %icon-font;
-
-  &:before {
-  	content: '\28';
-  }
-}
+// // Github login
+// .github {
+//   @extend %icon-font;
+// 
+//   &:before {
+//   	content: '\28';
+//   }
+// }
 
 .paypal-icon {
   @extend %icon-font;
@@ -172,21 +172,21 @@
   }
 }
 
-.control-icon {
-  @extend %icon-font;
+// .control-icon {
+//   @extend %icon-font;
+// 
+//   &:before {
+//     content: "\e002";
+//   }
+// }
 
-  &:before {
-    content: "\e002";
-  }
-}
-
-.cloud-icon {
-  @extend %icon-font;
-
-  &:before {
-    content: "\e003";
-  }
-}
+// .cloud-icon {
+//   @extend %icon-font;
+// 
+//   &:before {
+//     content: "\e003";
+//   }
+// }
 
 // %icon-preview-show {
 //   @extend %icon-font;
@@ -206,13 +206,13 @@
 //     line-height: 0.01;
 //   }
 // }
-%icon-Compass {
-  @extend %icon-font;
-
-	&:before {
-	  content: "\e008";
-	}
-}
+// %icon-Compass {
+//   @extend %icon-font;
+// 
+// 	&:before {
+// 	  content: "\e008";
+// 	}
+// }
 
 %icon-Open {
  @extend %icon-font;
@@ -233,11 +233,11 @@
   }
 }
 
-.jump-icon {
- @extend %icon-font;
-
-	&:before {
-    content: "\e004";
-    font-size: 2em;
-  }
-}
+// .jump-icon {
+//  @extend %icon-font;
+// 
+// 	&:before {
+//     content: "\e004";
+//     font-size: 2em;
+//   }
+// }
