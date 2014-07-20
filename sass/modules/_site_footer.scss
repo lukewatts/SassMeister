@@ -22,6 +22,12 @@ footer {
     margin-bottom: 0;
   }
 
+  svg {
+    display: inline-block;
+    vertical-align: middle;
+    fill: $charlie_gray;
+  }
+
   .info {
     @include grid(8);
 
@@ -29,6 +35,22 @@ footer {
 
     a {
       margin-right: 1.5em;
+
+      &:first-child {
+        @media #{$mobile} {
+          display: none;
+        }
+      }
+    }
+
+    .twitter-icon {
+      width: em(18);
+      height: em(18);
+    }
+
+    .heart-icon {
+      width: em(24);
+      height: em(24);
     }
 
     @media screen and (max-width: 650px) {
@@ -83,9 +105,6 @@ footer {
     }
 
     svg {
-      display: inline-block;
-      vertical-align: middle;
-      fill: $charlie_gray;
       height: 2em;
       width: 4.5em;
       margin: -6px 0 0 0.25em;
@@ -94,22 +113,6 @@ footer {
     &:hover svg {
       background: transparent;
       stroke: transparentize(scale-color($alpha_color_delta, $saturation: 90%, $lightness: 10%), 0.5);
-    }
-  }
-
-  .twitter-icon:before {
-    font-size: 1em;
-    margin-right: 0.2em;
-  }
-
-  .heart-icon {
-    &:before {
-      font-size: 1.2em;
-      margin-right: 0.2em;
-    }
-
-    @media #{$mobile} {
-      display: none;
     }
   }
 }
