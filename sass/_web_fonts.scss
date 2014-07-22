@@ -75,13 +75,13 @@
 // }
 
 // Github fork
-.fork-gist {
-  @extend %icon-font;
-
-  &:before {
-  	content: "\2a";
-  }
-}
+// .fork-gist {
+//   @extend %icon-font;
+// 
+//   &:before {
+//   	content: "\2a";
+//   }
+// }
 
 // // Github login
 // .github {
@@ -92,13 +92,13 @@
 //   }
 // }
 
-.paypal-icon {
-  @extend %icon-font;
-
-  &:before {
-	  content: '\27';
-  }
-}
+// .paypal-icon {
+//   @extend %icon-font;
+// 
+//   &:before {
+// 	  content: '\27';
+//   }
+// }
 
 // .heart-icon {
 //   @extend %icon-font;
@@ -121,56 +121,56 @@
   }
 }
 
-.cloud-up-icon, .edit-gist, .create-gist {
-	@extend %icon-font;
+// .cloud-up-icon, .edit-gist, .create-gist {
+// 	@extend %icon-font;
+// 
+//   &:before {
+//     content: "\24";
+//     margin-right: 0.2em;
+//   }
+// }
 
-  &:before {
-    content: "\24";
-    margin-right: 0.2em;
-  }
-}
+// .cloud-down-icon {
+// 	@extend %icon-font;
+// 
+//   &:before {
+//     content: "\25";
+//   }
+// }
 
-.cloud-down-icon {
-	@extend %icon-font;
+// .reset-icon {
+// 	@extend %icon-font;
+// 
+//   &:before {
+//   	content: "\e018";
+//   	font-size: 1.33334em;
+//   	margin-right: 0.3em;
+//   }
+// }
 
-  &:before {
-    content: "\25";
-  }
-}
+// .info-icon {
+//   @extend %icon-font;
+// 
+//   &:before {
+//   	content: "\21";
+//   }
+// }
 
-.reset-icon {
-	@extend %icon-font;
+// .off-icon {
+//   @extend %icon-font;
+// 
+//   &:before {
+//     content: "\2f";
+//   }
+// }
 
-  &:before {
-  	content: "\e018";
-  	font-size: 1.33334em;
-  	margin-right: 0.3em;
-  }
-}
-
-.info-icon {
-  @extend %icon-font;
-
-  &:before {
-  	content: "\21";
-  }
-}
-
-.off-icon {
-  @extend %icon-font;
-
-  &:before {
-    content: "\2f";
-  }
-}
-
-.checkmark-icon {
-  @extend %icon-font;
-
-  &:before {
-    content: "\30";
-  }
-}
+// .checkmark-icon {
+//   @extend %icon-font;
+// 
+//   &:before {
+//     content: "\30";
+//   }
+// }
 
 // .control-icon {
 //   @extend %icon-font;

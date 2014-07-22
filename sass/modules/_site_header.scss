@@ -99,6 +99,16 @@
       }
     }
   }
+
+
+  ul {
+    svg {
+      display: inline;
+      margin-right: 0.25em;
+      width: em(26);
+      height: em(26);
+    }
+  }
 }
 
 .tagline {
@@ -130,6 +140,9 @@
     line-height: 1.33334;
   }
 }
+
+
+
 
 #share_actions ul {
   width: em(380);
