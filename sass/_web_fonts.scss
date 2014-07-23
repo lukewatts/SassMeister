@@ -11,9 +11,9 @@
 	@include font-face ($font_family: 'SourceCodePro', $font-file:  'sourcecodepro-bold-webfont', $font_weight: bold, $font_style: normal);
 }
 
-@font-face {
-	@include font-face ($font_family: 'SassMeisterIcons', $font-file:  'sassmeistericons-webfont', $font_weight: normal, $font_style: normal);
-}
+// @font-face {
+// 	@include font-face ($font_family: 'SassMeisterIcons', $font-file:  'sassmeistericons-webfont', $font_weight: normal, $font_style: normal);
+// }
 
 %icon-font {
   display: inline-block;
@@ -108,18 +108,18 @@
 //   }
 // }
 
-.close-icon {
-  @extend %icon-font;
-  position: absolute;
-  top: 0.25em;
-  left: 0.5em;
-
-  &:before {
-	  content: "\22";
-	  font-size: 1.25em;
-	  line-height: 1;
-  }
-}
+// .close-icon {
+//   @extend %icon-font;
+//   position: absolute;
+//   top: 0.25em;
+//   left: 0.5em;
+// 
+//   &:before {
+// 	  content: "\22";
+// 	  font-size: 1.25em;
+// 	  line-height: 1;
+//   }
+// }
 
 // .cloud-up-icon, .edit-gist, .create-gist {
 // 	@extend %icon-font;

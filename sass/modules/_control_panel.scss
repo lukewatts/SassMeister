@@ -64,20 +64,16 @@ $control-column-open-width: em(480);
     border-left: 1px solid $golf_gray;
   }
 
-  .control-icon {
-    font-size: em($small_point_size);
-    color: $delta_gray;
-    cursor: pointer;
+  .close-icon {
+    fill: $delta_gray;
+    width: em(32);
+    height: em(32);
+
     position: absolute;
     top: 0.25em;
     left: 0.35em;
     display: block;
-    width: 1em;
     z-index: 1;
-
-    &:before {
-      content: "\22";
-    }
   }
 
   .control-container {

@@ -89,7 +89,7 @@ if($('body.app').length > 0 ) {
     event.stopPropagation();
   });
 
-  $('#open-controls').on('click', function(event) {
+  $('#open-controls, #close-controls').on('click', function(event) {
     event.stopPropagation();
     $('#control-column, #control-column-bg').toggleClass('open');
   });
