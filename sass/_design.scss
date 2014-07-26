@@ -150,3 +150,14 @@ body:after {
 }
 
 
+.thank-you {
+  display: block;
+  margin: 5% 5%;
+  text-align: center;
+
+  svg {
+    fill: $alpha_color_charlie;
+    width: 50%;
+    height: 50%;
+  }
+}
