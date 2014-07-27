@@ -47,8 +47,8 @@ if($('body.app').length > 0 ) {
   if(github_id && gravatar_id) {
     $('#github-auth').replaceWith('<div><span><img src="http://www.gravatar.com/avatar/' + gravatar_id + '?s=80" alt="" height="40"></span>\
       <ul id="account_actions">\
-        <li class="checkmark-icon"><svg class="checkmark-icon"><use xlink:href="/images/icons.svg#checkmark"></use></svg> Hello, ' + github_id + '!</li>\
-        <li class="off-icon"><a href="/logout"><svg class="power-icon"><use xlink:href="/images/icons.svg#power"></use></svg> <span>Logout</span></a></li>\
+        <li class="checkmark-icon"><svg class="checkmark-icon"><use xlink:href="' + window.imagePath + '/icons.svg#checkmark"></use></svg> Hello, ' + github_id + '!</li>\
+        <li class="off-icon"><a href="/logout"><svg class="power-icon"><use xlink:href="' + window.imagePath + '/icons.svg#power"></use></svg> <span>Logout</span></a></li>\
       </ul>\
     </div>');
   }
@@ -59,17 +59,17 @@ if($('body.app').length > 0 ) {
 
     if(!! github_id) {
       if(!! (window.gist && (window.gist.owner == github_id))) {
-        menu += '<li><a id="save-gist" data-action="edit" class="edit-gist"><svg class="cloud-up-icon"><use xlink:href="/images/icons.svg#cloud-up"></use></svg> <span>Update Gist</span></a></li>'
+        menu += '<li><a id="save-gist" data-action="edit" class="edit-gist"><svg class="cloud-up-icon"><use xlink:href="' + window.imagePath + '/icons.svg#cloud-up"></use></svg> <span>Update Gist</span></a></li>'
       }
       else {
-        menu += '<li><a id="save-gist" data-action="create" class="create-gist"><svg class="cloud-up-icon"><use xlink:href="/images/icons.svg#cloud-up"></use></svg> <span>Save Gist</span></a></li>'
+        menu += '<li><a id="save-gist" data-action="create" class="create-gist"><svg class="cloud-up-icon"><use xlink:href="' + window.imagePath + '/icons.svg#cloud-up"></use></svg> <span>Save Gist</span></a></li>'
       }
     }
     if(!! (github_id && window.gist)) {
-      menu += '<li><a id="fork-gist" data-action="create" class="fork-gist"><svg class="fork-icon"><use xlink:href="/images/icons.svg#fork"></use></svg> <span>Fork Gist</span></a></li>'
+      menu += '<li><a id="fork-gist" data-action="create" class="fork-gist"><svg class="fork-icon"><use xlink:href="' + window.imagePath + '/icons.svg#fork"></use></svg> <span>Fork Gist</span></a></li>'
     }
     if(! github_id) {
-      menu += '<li><a href="/authorize" class="github"><svg class="github-icon"><use xlink:href="/images/icons.svg#github"></use></svg> <span>Log in with your GitHub account to save gists</span></a></li>'
+      menu += '<li><a href="/authorize" class="github"><svg class="github-icon"><use xlink:href="' + window.imagePath + '/icons.svg#github"></use></svg> <span>Log in with your GitHub account to save gists</span></a></li>'
     }
     if(window.gist) {
       menu += '<li><a href="https://gist.github.com/' + window.gist.gist_id + '" class="github" id="gist-link"><svg class="github-icon"><use xlink:href="/images/icons.svg#github"></use></svg> <span>View on GitHub</span></a></li>'
