@@ -34,3 +34,26 @@
   var imagePath = '<%= "#{HOST}/images" %>';
   <%#= 'var resetApp = true;' if @force_invalidate %>
 </script>
+
+
+<div id="menu-templates" style="display: none;">
+
+  <span id="tmpl-menu-update"><a data-action="edit" class="edit-gist"><svg class="cloud-up-icon"><use xlink:href="<%= HOST %>/images/icons.svg#cloud-up"></use></svg> <span>Update Gist</span></a></span>
+  <span id="tmpl-menu-create"><a data-action="create" class="create-gist"><svg class="cloud-up-icon"><use xlink:href="<%= HOST %>/images/icons.svg#cloud-up"></use></svg> <span>Save Gist</span></a></span>
+  <span id="tmpl-menu-fork"><a data-action="create" class="fork-gist"><svg class="fork-icon"><use xlink:href="<%= HOST %>/images/icons.svg#fork"></use></svg> <span>Fork Gist</span></a></span>
+  <span id="tmpl-menu-login"><a href="/authorize" class="github"><svg class="github-icon"><use xlink:href="<%= HOST %>/images/icons.svg#github"></use></svg> <span>Log in with your GitHub account to save gists</span></a></span>
+  <span id="tmpl-menu-view"><a href="https://gist.github.com/{{gist_id}}" class="github"><svg class="github-icon"><use xlink:href="<%= HOST %>/images/icons.svg#github"></use></svg> <span>View on GitHub</span></a></span>
+  <span id="tmpl-menu-reset"><a class="reset-icon" id="reset"><svg><use xlink:href="/images/icons.svg#reset"></use></svg> <span>Reset</span></a></span>
+
+  <span id="tmpl-account">
+  
+    <div><span><img src="http://www.gravatar.com/avatar/{{gravatar_id}}?s=80" alt="" height="40"></span>
+      <ul id="account_actions">
+        <li class="checkmark-icon"><svg class="checkmark-icon"><use xlink:href="<%= HOST %>/images/icons.svg#checkmark"></use></svg> Hello, {{github_id}}!</li>
+        <li class="off-icon"><a href="/logout"><svg class="power-icon"><use xlink:href="<%= HOST %>/images/icons.svg#power"></use></svg> <span>Logout</span></a></li>
+      </ul>
+    </div>
+  
+  </span>
+
+</div>

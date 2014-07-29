@@ -54,28 +54,43 @@ if($('body.app').length > 0 ) {
   }
 
 
-  var buildCloudMenu = function() {
-    var menu = '';
+  window.buildCloudMenu = function() {
+    var menu = $('<ul/>');
 
     if(!! github_id) {
       if(!! (window.gist && (window.gist.owner == github_id))) {
-        menu += '<li><a id="save-gist" data-action="edit" class="edit-gist"><svg class="cloud-up-icon"><use xlink:href="' + window.imagePath + '/icons.svg#cloud-up"></use></svg> <span>Update Gist</span></a></li>'
+        //menu += '<li><a id="save-gist" data-action="edit" class="edit-gist"><svg class="cloud-up-icon"><use xlink:href="' + window.imagePath + '/icons.svg#cloud-up"></use></svg> <span>Update Gist</span></a></li>'
+        debugger;
+
+        menu.append($('<li/>').append($($('#tmpl-menu-update').clone().html()).attr('id', 'save-gist')));
       }
       else {
-        menu += '<li><a id="save-gist" data-action="create" class="create-gist"><svg class="cloud-up-icon"><use xlink:href="' + window.imagePath + '/icons.svg#cloud-up"></use></svg> <span>Save Gist</span></a></li>'
+      
+        
+        //menu += '<li><a id="save-gist" data-action="create" class="create-gist"><svg class="cloud-up-icon"><use xlink:href="' + window.imagePath + '/icons.svg#cloud-up"></use></svg> <span>Save Gist</span></a></li>'
+
+        menu.append($('<li/>').append($($('#tmpl-menu-create').clone().html()).attr('id', 'save-gist')));
       }
     }
     if(!! (github_id && window.gist)) {
-      menu += '<li><a id="fork-gist" data-action="create" class="fork-gist"><svg class="fork-icon"><use xlink:href="' + window.imagePath + '/icons.svg#fork"></use></svg> <span>Fork Gist</span></a></li>'
+      //menu += '<li><a id="fork-gist" data-action="create" class="fork-gist"><svg class="fork-icon"><use xlink:href="' + window.imagePath + '/icons.svg#fork"></use></svg> <span>Fork Gist</span></a></li>'
+
+      menu.append($('<li/>').append($('#tmpl-menu-fork').clone().html()));
     }
     if(! github_id) {
-      menu += '<li><a href="/authorize" class="github"><svg class="github-icon"><use xlink:href="' + window.imagePath + '/icons.svg#github"></use></svg> <span>Log in with your GitHub account to save gists</span></a></li>'
+      //menu += '<li><a href="/authorize" class="github"><svg class="github-icon"><use xlink:href="' + window.imagePath + '/icons.svg#github"></use></svg> <span>Log in with your GitHub account to save gists</span></a></li>'
+
+      menu.append($('<li/>').append($('#tmpl-menu-login').clone().html()));
     }
     if(window.gist) {
-      menu += '<li><a href="https://gist.github.com/' + window.gist.gist_id + '" class="github" id="gist-link"><svg class="github-icon"><use xlink:href="/images/icons.svg#github"></use></svg> <span>View on GitHub</span></a></li>'
+      //menu += '<li><a href="https://gist.github.com/' + window.gist.gist_id + '" class="github" id="gist-link"><svg class="github-icon"><use xlink:href="/images/icons.svg#github"></use></svg> <span>View on GitHub</span></a></li>'
+
+      menu.append($('<li/>').append($('#tmpl-menu-view').clone().html()));
     }
 
-    $('#menu-placeholder').replaceWith(menu);
+    menu.append($('<li/>').append($('#tmpl-menu-reset').clone().html()));
+
+    $('#cloud_actions').html(menu.html());
   };
 
   buildCloudMenu();
