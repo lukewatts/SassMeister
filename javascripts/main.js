@@ -1,3 +1,50 @@
+
+
+(function($){
+  var github_id = $.cookie('github_id');
+
+  window.SassMeister.menu = {
+    template: {
+      update: $('#tmpl-menu-update').clone().html(),
+      create: $('#tmpl-menu-create').clone().html(),
+      fork: $('#tmpl-menu-fork').clone().html(),
+      login: $('#tmpl-menu-login').clone().html(),
+      view: $('#tmpl-menu-view').clone().html(),
+      reset: $('#tmpl-menu-reset').clone().html()
+    },
+
+    build: function() {
+      var menu = $('<ul/>');
+
+      if(!! github_id) {
+        if(!! (window.gist && (window.gist.owner == github_id))) {
+          menu.append($('<li/>').append(this.template.update));
+        }
+        else {
+          menu.append($('<li/>').append(this.template.create));
+        }
+      }
+      if(!! (github_id && window.gist)) {
+        menu.append($('<li/>').append(this.template.fork));
+      }
+      if(! github_id) {
+        menu.append($('<li/>').append(this.template.login));
+      }
+      if(window.gist) {
+        menu.append($('<li/>').append(this.template.view));
+      }
+
+      menu.append($('<li/>').append(this.template.reset));
+
+      $('#cloud_actions').html(menu.html());
+    }
+
+  };
+})(jQuery);
+
+
+
+
 (function($) {
 if($('body.app, body.embedded').length > 0 ) {
   var SassMeister = window.SassMeister.init();
@@ -54,47 +101,7 @@ if($('body.app').length > 0 ) {
   }
 
 
-  window.buildCloudMenu = function() {
-    var menu = $('<ul/>');
-
-    if(!! github_id) {
-      if(!! (window.gist && (window.gist.owner == github_id))) {
-        //menu += '<li><a id="save-gist" data-action="edit" class="edit-gist"><svg class="cloud-up-icon"><use xlink:href="' + window.imagePath + '/icons.svg#cloud-up"></use></svg> <span>Update Gist</span></a></li>'
-        debugger;
-
-        menu.append($('<li/>').append($($('#tmpl-menu-update').clone().html()).attr('id', 'save-gist')));
-      }
-      else {
-      
-        
-        //menu += '<li><a id="save-gist" data-action="create" class="create-gist"><svg class="cloud-up-icon"><use xlink:href="' + window.imagePath + '/icons.svg#cloud-up"></use></svg> <span>Save Gist</span></a></li>'
-
-        menu.append($('<li/>').append($($('#tmpl-menu-create').clone().html()).attr('id', 'save-gist')));
-      }
-    }
-    if(!! (github_id && window.gist)) {
-      //menu += '<li><a id="fork-gist" data-action="create" class="fork-gist"><svg class="fork-icon"><use xlink:href="' + window.imagePath + '/icons.svg#fork"></use></svg> <span>Fork Gist</span></a></li>'
-
-      menu.append($('<li/>').append($('#tmpl-menu-fork').clone().html()));
-    }
-    if(! github_id) {
-      //menu += '<li><a href="/authorize" class="github"><svg class="github-icon"><use xlink:href="' + window.imagePath + '/icons.svg#github"></use></svg> <span>Log in with your GitHub account to save gists</span></a></li>'
-
-      menu.append($('<li/>').append($('#tmpl-menu-login').clone().html()));
-    }
-    if(window.gist) {
-      //menu += '<li><a href="https://gist.github.com/' + window.gist.gist_id + '" class="github" id="gist-link"><svg class="github-icon"><use xlink:href="/images/icons.svg#github"></use></svg> <span>View on GitHub</span></a></li>'
-
-      menu.append($('<li/>').append($('#tmpl-menu-view').clone().html()));
-    }
-
-    menu.append($('<li/>').append($('#tmpl-menu-reset').clone().html()));
-
-    $('#cloud_actions').html(menu.html());
-  };
-
-  buildCloudMenu();
-
+  SassMeister.menu.build();
 
   $('#control-column-bg').on('click', function(event) {
     $('#control-column, #control-column-bg').removeClass('open');
@@ -289,13 +296,13 @@ if($('body.app').length > 0 ) {
   };
 
 
-  $('#save-gist, #fork-gist').on('click', function(event) {
+  $('#').on('click', '#save-gist, #fork-gist', function(event) {
     event.preventDefault();
 
     SassMeister.gist[($(this).data('action'))]();
   });
 
-  $('#reset').on('click', function(event) {
+  $(document.body).on('click', '#reset', function(event) {
     event.preventDefault();
 
     SassMeister.reset();

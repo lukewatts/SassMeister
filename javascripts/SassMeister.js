@@ -368,8 +368,9 @@ var SassMeister;
 
             $('#save-gist').data('action', 'edit').html('<span>Update Gist</span>');
 
-            buildCloudMenu();
-            
+
+            SassMeister.menu.build();
+
             // if($('#fork-gist').length < 1) {
             //   $('#save-gist').parent('li').after('<li><a id="fork-gist" class="fork-gist" data-action="create"><span>Fork Gist</span></a></li>');
             // }
@@ -406,7 +407,7 @@ var SassMeister;
           .done(function( data ) {
             modal('<a href="https://gist.github.com/' + data.id + '" target="_blank">Your Gist</a> ' + confirmationText + '.');
 
-            buildCloudMenu();
+            SassMeister.menu.build();
             $('#gist-link').attr('href', 'https://gist.github.com/' + data.id);
             setUrl('/gist/' + data.id);
           })
@@ -429,7 +430,7 @@ var SassMeister;
           .done(function( data ) {
             modal('<a href="https://gist.github.com/' + data.id + '" target="_blank">This Gist</a> ' + confirmationText + '.');
 
-            buildCloudMenu();
+            SassMeister.menu.build();
             $('#gist-link').attr('href', 'https://gist.github.com/' + data.id);
             setUrl('/gist/' + data.id);
             SassMeister.inputs.gist_id = data.id;
