@@ -5,7 +5,6 @@
 
   window.SassMeister.menu = {
     template: {
-      update: $('#tmpl-menu-update').clone().html(),
       create: $('#tmpl-menu-create').clone().html(),
       fork: $('#tmpl-menu-fork').clone().html(),
       login: $('#tmpl-menu-login').clone().html(),
@@ -17,11 +16,10 @@
       var menu = $('<ul/>');
 
       if(!! github_id) {
-        if(!! (window.gist && (window.gist.owner == github_id))) {
-          menu.append($('<li/>').append(this.template.update));
-        }
-        else {
-          menu.append($('<li/>').append(this.template.create));
+        menu.append($('<li/>').append(this.template.create));
+
+        if(!! (window.gist && (window.gist.gist_owner == github_id))) {
+          menu.find('[data-action="create"]').attr('data-action', 'edit');
         }
       }
       if(!! (github_id && window.gist)) {
@@ -32,6 +30,7 @@
       }
       if(window.gist) {
         menu.append($('<li/>').append(this.template.view));
+        menu.html(menu.html().replace(/{{gist_id}}/, window.gist.gist_id))
       }
 
       menu.append($('<li/>').append(this.template.reset));
@@ -40,6 +39,19 @@
     }
 
   };
+
+
+  $(document.body).on('click', '#cloud_actions [data-action]', function(event) {
+    event.preventDefault();
+
+    SassMeister.gist[($(this).data('action'))]();
+  });
+
+  $(document.body).on('click', '#reset', function(event) {
+    event.preventDefault();
+
+    SassMeister.reset();
+  });
 })(jQuery);
 
 
@@ -296,17 +308,7 @@ if($('body.app').length > 0 ) {
   };
 
 
-  $('#').on('click', '#save-gist, #fork-gist', function(event) {
-    event.preventDefault();
 
-    SassMeister.gist[($(this).data('action'))]();
-  });
-
-  $(document.body).on('click', '#reset', function(event) {
-    event.preventDefault();
-
-    SassMeister.reset();
-  });
 
   $('#toggle_css').on('click', function(event) {
     event.preventDefault();
